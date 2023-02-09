@@ -1,5 +1,4 @@
 const express = require('express')
-const { useStore } = require('vuex')
 const app = express()
 const mysql = require('mysql')
 const bodyParser = require('body-parser')
