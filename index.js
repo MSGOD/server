@@ -18,7 +18,7 @@ app.use(express.static(path.join(__dirname + "/public")))
 app.use(bodyParser.urlencoded({extended: true}))
 const PORT = process.env.PORT
 
-app.post('/api/insert', (req, res) => {
+app.post('/', (req, res) => {
 
     const InputGrade = req.body.InputGrade
     const InputName = req.body.InputName 
