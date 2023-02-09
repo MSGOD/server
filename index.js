@@ -1,4 +1,5 @@
 const express = require('express')
+const { useStore } = require('vuex')
 const app = express()
 const mysql = require('mysql')
 const bodyParser = require('body-parser')
@@ -16,9 +17,9 @@ app.use(cors())
 app.use(express.json())
 app.use(express.static(path.join(__dirname + "/public")))
 app.use(bodyParser.urlencoded({extended: true}))
-const PORT = process.env.PORT
+const PORT = process.env.PORT || 3002
 
-app.post('/', (req, res) => {
+app.post('/api/insert', (req, res) => {
 
     const InputGrade = req.body.InputGrade
     const InputName = req.body.InputName 
@@ -31,6 +32,4 @@ app.post('/', (req, res) => {
     })
 })
 
-app.listen(PORT, () => {
-    console.log(`listening on port: ${PORT}`)
-})
+app.listen(PORT)
