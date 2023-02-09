@@ -16,7 +16,7 @@ app.use(cors())
 app.use(express.json())
 app.use(express.static(path.join(__dirname + "/public")))
 app.use(bodyParser.urlencoded({extended: true}))
-const PORT = process.env.PORT || 3002
+const PORT = process.env.PORT
 
 app.post('/api/insert', (req, res) => {
 
