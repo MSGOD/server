@@ -18,6 +18,14 @@ app.use(express.static(path.join(__dirname + "/public")))
 app.use(bodyParser.urlencoded({extended: true}))
 const PORT = process.env.PORT || 5000
 
+app.get('/api/get', (req, res) => {
+    const sqlSelect = 
+        "SELECT * FROM ratings;"
+    db.query(sqlSelect, (err, result) => {
+        res.send(result)
+    })
+})
+
 app.post('/api/insert', (req, res) => {
 
     const InputGrade = req.body.InputGrade
@@ -27,7 +35,6 @@ app.post('/api/insert', (req, res) => {
     const sqlInsert = 
         "INSERT INTO ratings (create_time, grade, name, commentaire) VALUES (NOW(), ?, ?, ?);"
     db.query(sqlInsert, [InputGrade, InputName, InputComment], (err, result) => {
-        console.log(result)
     })
 })
 // save
